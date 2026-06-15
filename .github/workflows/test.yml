@@ -15,31 +15,32 @@ jobs:
   test:
     runs-on: "ubuntu-latest"
     steps:
-      - shell: "sh"
+      - name: "test"
+        shell: "sh"
         run: |
           abort() {
             printf "%s\n" "$@"
             exit 1
           }
-          
+          #
           is_glibc_compatible() {
             getconf GNU_LIBC_VERSION >/dev/null 2>&1 || ldd --version >/dev/null 2>&1 || return 1
           }
-          
+          #
           test() {
             if is_glibc_compatible; then
               echo 'glibc compatible'
             else
               echo 'not glibc compatible'
             fi
-          
+          #
             echo "SHELL=$SHELL"
-          
+          #
             echo "uname -m"
-          
+          #
             tmp_dir="$(mktemp -d)" || abort "mktemp error"
             echo "$tmp_dir"
             trap "rm -rf '$tmp_dir'" EXIT INT TERM HUP
           }
-          
+          #
           test() || abort "unknown error"
