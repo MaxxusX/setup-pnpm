@@ -8,7 +8,7 @@ permissions:
 
 defaults:
   run:
-    shell: "sh"
+    shell: "bash"
     working-directory: "."
 
 jobs:
@@ -16,7 +16,6 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "test"
-        shell: "sh"
         run: |
           abort() {
             printf "%s\n" "$@"
