@@ -35,7 +35,7 @@ jobs:
           
             echo "SHELL=$SHELL"
           
-            echo "uname -m"
+            echo "$(uname -m)"
           
             tmp_dir="$(mktemp -d)" || abort "mktemp error"
             echo "$tmp_dir"
