@@ -19,7 +19,7 @@ jobs:
         run: |
           file=$(mktemp)
           echo 'hello' >> "$file"
-          echo "$(cat $file)"
-          echo "$(cksum --help)"
-          echo "$(cksum -a sha2 -l 256 --untagged "$@" ${file})"
-          echo "$(cksum -a sha2 -l 256 --untagged ${file})"
+          echo "$(cksum -a sha256 -l 256 --untagged "$@" ${file})"
+          echo "$(cksum -a sha256 --untagged "$@" ${file})"
+          echo "$(cksum -a sha256 -l 256 --untagged ${file})"
+          echo "$(cksum -a sha256 --untagged ${file})"
