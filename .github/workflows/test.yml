@@ -21,8 +21,8 @@ jobs:
           echo 'hello' >> "$file"
           echo "$(cksum -a sha256 --untagged "$@" ${file})"
           echo "$(cksum -a sha256 --untagged ${file})"
-          version=$(jq -rn 'empty')
+          version=$(jq -rn '""')
           if [[ -z "$version" ]]; then
             echo '::error::invalid "packageManager" in package.json'
-            exit 1;
+            exit;
           fi
