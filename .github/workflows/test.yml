@@ -19,7 +19,10 @@ jobs:
         run: |
           file=$(mktemp)
           echo 'hello' >> "$file"
-          echo "$(cksum -a sha256 -l 256 --untagged "$@" ${file})"
           echo "$(cksum -a sha256 --untagged "$@" ${file})"
-          echo "$(cksum -a sha256 -l 256 --untagged ${file})"
           echo "$(cksum -a sha256 --untagged ${file})"
+          version=$(jq -rn 'empty')
+          if [[ -z "$version" ]]; then
+            echo '::error::invalid "packageManager" in package.json'
+            exit 1;
+          fi
