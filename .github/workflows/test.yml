@@ -17,10 +17,4 @@ jobs:
     steps:
       - name: "test"
         run: |
-          file=$(mktemp)
-          echo 'hello' >> "$file"
-          echo "$(cksum -a sha256 --untagged "$@" ${file})"
-          echo "$(cksum -a sha256 --untagged ${file})"
-          echo ${$(cksum -a sha256 --untagged ${file}):0:64}
-          echo '::error::invalid "packageManager" in package.json%0Aaaaa' >&2
-          exit 1;
+          echo "$HOME"
