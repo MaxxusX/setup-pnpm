@@ -21,6 +21,6 @@ jobs:
           echo 'hello' >> "$file"
           echo "$(cksum -a sha256 --untagged "$@" ${file})"
           echo "$(cksum -a sha256 --untagged ${file})"
-          printf 'test\n' >&2
-          printf '::error::invalid "packageManager" in package.json\%0Aaaaa\n'
-          # exit 1;
+          printf 'test\n' 1>&2
+          printf '::error::invalid "packageManager" in package.json%0A\naaaa\n'
+          exit 1;
